@@ -6,30 +6,27 @@
     <title>Remind js</title>
     <script>
 
-        // On créé un nombre entre 0 et 10
-        let rand = (a) => Math.floor(Math.random() * a)
-        n_rand = rand(10)
-        console.log(n_rand)
-        // Quand n_rand === n
-        let isRight = (n) => n_rand === n
-        
-        function guess() {
-            let i = 1
-            let n = prompt('Devinez le nombre !') * 1
-            
-            while (!isRight(n) && i < 3) {
-                n = prompt('Devinez encore !') * 1
-                i++;
-            }
-            
-            if (isRight(n)){
-                alert('Vous avez deviné !')
-            } else if (i === 3) {
-                alert('Désolé, vous avez fait plus de 3 essais !')
-            }
+        function isPalindrome(str) {
+
+            str = str.toLowerCase()
+            n_str = str.split('').reverse().join('')
+
+            return str === n_str
+
         }
 
-        guess()
+        const words = {
+            kayak: true,
+            SOS: true,
+            Kayak: true,
+            Bonjour: false
+        }
+
+        for (let word in words) {
+            if (isPalindrome(word) !== words[word]){
+                console.error(`isPalindrome(${word}) aurait du renvoyer ${words[word]}`)
+            }
+        }
 
 
     </script>
