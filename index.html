@@ -1,13 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Remind js</title>
     <script>
 
-        
+        function isPalindrome(str) {
 
+            str = str.toLowerCase()
+            n_str = str.split('').reverse().join('')
+
+            return str === n_str
+
+        }
+
+        const words = {
+            kayak: true,
+            SOS: true,
+            Kayak: true,
+            Bonjour: false
+        }
+
+        for (let word in words) {
+            if (isPalindrome(word) !== words[word]){
+                console.error(`isPalindrome(${word}) aurait du renvoyer ${words[word]}`)
+            }
+        }
 
 
     </script>
