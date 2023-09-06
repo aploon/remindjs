@@ -1,7 +1,19 @@
-import {readFile} from 'node:fs/promises'
+import { readdir } from 'node:fs/promises';
+import { stat } from 'node:fs'
 
-const content = readFile('demo.txt', {encoding: 'utf8'})
-content.then((e) => {
-    console.log(e)
-    throw new Error('Hello word !')
-}).catch((e) => console.log(e))
+try {
+    const files = await readdir('./');
+    for (const file of files) {
+        stat(file, (e, s) => {
+            if (s.isFile()){
+                let size = (s.size / 100) + 'ko'
+                console.log(`F - ${file} - ${size}`)
+            }else{
+                let size = (s.size / 100) + 'ko'
+                console.log(`D - ${file} - ${size}`)
+            }
+        })
+    }
+} catch (err) {
+    console.error(err);
+}
