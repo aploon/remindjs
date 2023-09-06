@@ -1,5 +1,7 @@
-import fs from 'node:fs'
+import {readFile} from 'node:fs/promises'
 
-const content = fs.readFile('demo.txt', {encoding: 'utf8'}, (e, data) => {
-    console.log(data)
-})
+const content = copyFile('demo.txt', {encoding: 'utf8'})
+content.then((e) => {
+    console.log(e)
+    throw new Error('Hello word !')
+}).catch((e) => console.log(e))
