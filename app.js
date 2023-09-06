@@ -1,1 +1,3 @@
-console.log('Bonjour le monde !')
+import fs from 'node:fs'
+
+console.log('hello')
